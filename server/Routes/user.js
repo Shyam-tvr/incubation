@@ -8,14 +8,9 @@ const mongoose = require('mongoose')
 
 const ObjectId = mongoose.Types.ObjectId
 
-
-
-
 router.get('/', (req, res) => {
     res.send('hello wosaadrld')
 })
-
-
 
 router.post('/register', async (req, res) => {
     console.log(req.body);

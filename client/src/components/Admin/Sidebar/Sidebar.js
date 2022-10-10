@@ -46,8 +46,6 @@ const Sidebar = () => {
 
     const token = localStorage.getItem('Admintoken')
 
-
-
     const handleLogin = () => {
         if (token) {
           localStorage.removeItem('Admintoken')
@@ -57,14 +55,8 @@ const Sidebar = () => {
         }
       }
 
-
-
-
-
-
     return (
         <>
-
             <div className="col-2 ">
                 <div id="header" >
                     {/* collapsed props to change menu size using menucollapse state */}

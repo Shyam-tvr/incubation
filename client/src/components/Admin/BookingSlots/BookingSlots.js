@@ -1,203 +1,227 @@
-import React, { useEffect, useState } from 'react'
-import '../BookingSlots/BookingSlot.css'
-import { Button, Modal } from 'react-bootstrap';
-
+import React, { useEffect, useState } from "react";
+import "../BookingSlots/BookingSlot.css";
+import { Button, Modal } from "react-bootstrap";
 
 function BookingSlots() {
+  let A, B, C, D, E;
 
-    let A, B, C, D, E
+  // let applicantId
+  // var slotId,slotSection
 
-    // let applicantId
-    // var slotId,slotSection
+  const [sectionA, setSectionA] = useState([]);
+  const [sectionB, setSectionB] = useState([]);
+  const [sectionC, setSectionC] = useState([]);
+  const [sectionD, setSectionD] = useState([]);
+  const [sectionE, setSectionE] = useState([]);
 
-    const [sectionA, setSectionA] = useState([])
-    const [sectionB, setSectionB] = useState([])
-    const [sectionC, setSectionC] = useState([])
-    const [sectionD, setSectionD] = useState([])
-    const [sectionE, setSectionE] = useState([])
+  const [slotId, setSlotId] = useState();
+  const [slotSection, setSlotSection] = useState();
 
+  const [applicantsList, setApplicantsList] = useState([]);
 
-    const [slotId, setSlotId] = useState()
-    const [slotSection, setSlotSection] = useState()
+  // modal
 
+  const [show, setShow] = useState(false);
 
+  const handleClose = () => setShow(false);
 
+  useEffect(() => {
+    displaySlots();
+    applicants();
+  }, [sectionA,sectionB,sectionC,sectionD]);
 
+  const applicants = async () => {
+    const req = await fetch("http://localhost:9000/admin/applicants/list");
+    const response = await req.json();
 
-    const [applicantsList, setApplicantsList] = useState([])
+    const records = response.data.filter((item) => {
+      return !item.isBooked;
+    });
 
-    // modal
+    setApplicantsList(records);
+    // console.log(applicantsList);
+  };
 
-    const [show, setShow] = useState(false);
+  const displaySlots = async () => {
+    const req = await fetch("http://localhost:9000/admin/slots");
+    const response = await req.json();
+    const slots = response.data;
+    console.log(slots);
 
-    const handleClose = () => setShow(false);
+    A = slots.filter((item) => {
+      return item.section === "A";
+    });
+    setSectionA(A);
 
+    B = slots.filter((item) => {
+      return item.section === "B";
+    });
+    setSectionB(B);
 
+    C = slots.filter((item) => {
+      return item.section === "C";
+    });
+    setSectionC(C);
 
+    D = slots.filter((item) => {
+      return item.section === "D";
+    });
+    setSectionD(D);
 
-    useEffect(() => {
-        displaySlots()
-        applicants()
-    })
+    E = slots.filter((item) => {
+      return item.section === "E";
+    });
+    setSectionE(E);
+  };
+  const handleShow = (slot_id, slot_section) => {
+    // slotId = slot_id
+    setSlotId(slot_id);
+    // slotSection=slot_section
+    setSlotSection(slot_section);
+    console.log(slotId, slotSection);
 
+    setShow(true);
+  };
 
-    const applicants = async () => {
-        const req = await fetch('http://localhost:9000/admin/applicants/list')
-        const response = await req.json()
+  const slotBooking = async (id) => {
+    let applicantId = id;
+    console.log(applicantId, slotId, slotSection);
+    const req = await fetch(
+      `http://localhost:9000/admin/slot/update?applicantId=${applicantId}&slotId=${slotId}&slotSection=${slotSection}`
+    );
+  };
 
-        const records = response.data.filter((item) => {
-                return (!item.isBooked)
-            })
+  return (
+    <div className="container pt-5">
+      <h2 className="text-center text-decoration-underline"> Slots </h2>
+      <div className="row g-5 mt-3">
+        <div className="col-3">
+          <div className="row g-3">
+            {sectionA &&
+              sectionA.map((item, index) => {
+                return (
+                  <div className="col-6">
+                    <div
+                      style={{ height: "80px" }}
+                      key={index}
+                      className={`${
+                        item.isBooked ? " bg-success" : "bg-secondary"
+                      } `}
+                      onClick={() => {
+                        return item.isBooked
+                          ? " "
+                          : handleShow(item.slot, item.section);
+                      }}
+                    ></div>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+        <div className="col-3">
+          <div className="row g-3">
+            {sectionB &&
+              sectionB.map((item, index) => {
+                return (
+                  <div className="col-6">
+                    <div
+                      style={{ height: "80px" }}
+                      key={index}
+                      className={`${
+                        item.isBooked ? " bg-success" : "bg-secondary"
+                      } `}
+                      onClick={() => {
+                        return item.isBooked
+                          ? " "
+                          : handleShow(item.slot, item.section);
+                      }}
+                    ></div>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+        <div className="col-3">
+          <div className="row g-3">
+            {sectionC &&
+              sectionC.map((item, index) => {
+                return (
+                  <div className="col-6">
+                    <div
+                      style={{ height: "80px" }}
+                      key={index}
+                      className={`${
+                        item.isBooked ? " bg-success" : "bg-secondary"
+                      } `}
+                      onClick={() => {
+                        return item.isBooked
+                          ? " "
+                          : handleShow(item.slot, item.section);
+                      }}
+                    ></div>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+        <div className="col-3">
+          <div className="row g-3">
+            {sectionD &&
+              sectionD.map((item, index) => {
+                return (
+                  <div className="col-6">
+                    <div
+                      style={{ height: "80px" }}
+                      key={index}
+                      className={`${
+                        item.isBooked ? " bg-success" : "bg-secondary"
+                      } `}
+                      onClick={() => {
+                        return item.isBooked
+                          ? " "
+                          : handleShow(item.slot, item.section);
+                      }}
+                    ></div>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
 
-            setApplicantsList(records)
-            // console.log(applicantsList);
-        }
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Select a Company</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              onChange={(e) => {
+                slotBooking(e.target.value);
+              }}
+            >
+              <option selected>--select--</option>
 
+              {applicantsList &&
+                applicantsList.map((item, index) => {
+                  return (
+                    <option key={index} value={item._id}>
+                      {" "}
+                      {item.companyName}
+                    </option>
+                  );
+                })}
+            </select>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    </div>
+  );
+}
 
-
-    const displaySlots = async () => {
-            const req = await fetch('http://localhost:9000/admin/slots')
-            const response = await req.json()
-            const slots = response.data
-
-            A = slots.filter((item) => {
-                return (item.section === 'A')
-            })
-            setSectionA(A)
-
-
-            B = slots.filter((item) => {
-                return (item.section === 'B')
-            })
-            setSectionB(B)
-
-
-            C = slots.filter((item) => {
-                return (item.section === 'C')
-            })
-            setSectionC(C)
-
-
-            D = slots.filter((item) => {
-                return (item.section === 'D')
-            })
-            setSectionD(D)
-
-            E = slots.filter((item) => {
-                return (item.section === 'E')
-            })
-            setSectionE(E)
-
-        }
-        const handleShow = (slot_id, slot_section) => {
-            // slotId = slot_id
-            setSlotId(slot_id)
-            // slotSection=slot_section
-            setSlotSection(slot_section)
-            console.log(slotId, slotSection)
-
-            setShow(true);
-        }
-
-
-
-        const slotBooking = async (id) => {
-            let applicantId = id
-            console.log(applicantId, slotId, slotSection);
-            const req = await fetch(`http://localhost:9000/admin/slot/update?applicantId=${applicantId}&slotId=${slotId}&slotSection=${slotSection}`)
-
-        }
-
-        return (
-            <div>
-                <div className="d-flex sectionA ms-lg-5 mx-auto">
-                    {sectionA &&
-                        sectionA.map((item) => {
-
-                            return (
-                                <div className={item.isBooked ? 'slot  bg-secondary' : 'slot  bg-warning'} onClick={() => { return (item.isBooked ? " " : handleShow(item.slot, item.section)) }}></div>
-                            )
-                        })
-                    }
-                </div>
-                <div className="row ms-5">
-                    <div className="col-md-2 col-sm-6 ms-5 section">
-                        {sectionB &&
-                            sectionB.map((item) => {
-                                return (
-                                    <div className={item.isBooked ? 'subSlot col-4  bg-secondary' : 'subSlot col-4  bg-warning'} onClick={() => { return (item.isBooked ? " " : handleShow(item.slot, item.section)) }}></div>
-                                )
-                            })}
-                    </div>
-                    <div className="col-md-2 col-sm-6   section">
-                        {sectionB &&
-                            sectionC.map((item) => {
-                                return (
-                                    <div className={item.isBooked ? 'subSlot col-4  bg-secondary' : 'subSlot col-4  bg-warning'} onClick={() => { return (item.isBooked ? " " : handleShow(item.slot, item.section)) }}></div>
-                                )
-                            })}
-                    </div>
-                    <div className="col-md-2 col-sm-6   section">
-                        {sectionB &&
-                            sectionD.map((item) => {
-                                return (
-                                    <div className={item.isBooked ? 'subSlot col-4  bg-secondary' : 'subSlot col-4  bg-warning'} onClick={() => { return (item.isBooked ? " " : handleShow(item.slot, item.section)) }}></div>
-                                )
-                            })}
-                    </div>
-                    <div className="col-md-2 col-sm-6  section">
-                        {sectionB &&
-                            sectionE.map((item) => {
-                                return (
-                                    <div onClick={() => { return (item.isBooked ? " " : handleShow(item.slot, item.section)) }} className={item.isBooked ? 'subSlot col-4  bg-secondary' : 'subSlot col-4  bg-warning'} ></div>
-                                )
-                            })}
-                    </div>
-                </div>
-
-
-
-
-
-
-                <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Select a Company</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <select class="form-select" aria-label="Default select example"
-
-                            onChange={(e) => {
-                                slotBooking(e.target.value)
-                            }}
-                        >
-                            <option selected>--select--</option>
-
-                            {applicantsList &&
-
-                                applicantsList.map((item) => {
-                                    return (
-                                        <option value={item._id}> {item.companyName}</option>
-
-
-                                    )
-                                })
-
-
-
-                            }
-                        </select>
-
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                            Close
-                        </Button>
-                         
-                    </Modal.Footer>
-                </Modal>
-            </div>
-        )
-    }
-
-    export default BookingSlots
+export default BookingSlots;

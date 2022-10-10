@@ -11,7 +11,6 @@ import Progress_bar from '../../ProgressBar/ProgressBar';
 
 
 
-
 function RecordList() {
 
 
@@ -92,7 +91,7 @@ function RecordList() {
                                                 <label  >Phone :{result.phone}</label><br />
                                             </td>
                                             <td> 
-                                                <Progress_bar   status={result.status}   />
+                                                <Progress_bar status={result.status}  />
                                             </td>
                                              
 

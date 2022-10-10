@@ -64,7 +64,7 @@ function ApplyForIncubation() {
                             value={form.name}
                             type="text"
                             className="form-control"
-                            placeholder="First name"
+                            placeholder="Name"
                             onChange={(e) => setForm({ ...form, name: e.target.value })}
                         />
                     </div>
@@ -76,7 +76,7 @@ function ApplyForIncubation() {
                             value={form.address}
                             type="text"
                             className="form-control"
-                            placeholder="Enter email"
+                            placeholder="Address"
                             // onChange={(e) => setForm(e.target.value)}
                             onChange={(e) => setForm({ ...form, address: e.target.value })}
                         />
@@ -90,7 +90,7 @@ function ApplyForIncubation() {
                             value={form.city}
                             type="text"
                             className="form-control"
-                            placeholder="First name"
+                            placeholder="City"
                             // onChange={(e) => setForm(e.target.value)}
                             onChange={(e) => setForm({ ...form, city: e.target.value })}
                         />
@@ -103,7 +103,7 @@ function ApplyForIncubation() {
                             value={form.state}
                             type="text"
                             className="form-control"
-                            placeholder="Enter email"
+                            placeholder="State"
                             // onChange={(e) => setForm(e.target.value)}
                             onChange={(e) => setForm({ ...form, state: e.target.value })}
                         />
@@ -117,7 +117,7 @@ function ApplyForIncubation() {
                             value={form.email}
                             type="text"
                             className="form-control"
-                            placeholder="First name"
+                            placeholder="Email"
                             // onChange={(e) => setForm(e.target.value)}
                             onChange={(e) => setForm({ ...form, email: e.target.value })}
                         />
@@ -130,7 +130,7 @@ function ApplyForIncubation() {
                             value={form.phone}
                             type="text"
                             className="form-control"
-                            placeholder="Enter email"
+                            placeholder="Phone"
                             // onChange={(e) => setForm(e.target.value)}
                             onChange={(e) => setForm({ ...form, phone: e.target.value })}
                         />
@@ -144,7 +144,7 @@ function ApplyForIncubation() {
                             value={form.companyName}
                             type="text"
                             className="form-control"
-                            placeholder="First name"
+                            placeholder="Company"
                             // onChange={(e) => setForm(e.target.value)}
                             onChange={(e) => setForm({ ...form, companyName: e.target.value })}
                         />
@@ -161,7 +161,7 @@ function ApplyForIncubation() {
                         value={form.teamAndBackground}
                         type="text"
                         className="form-control"
-                        placeholder="Enter email"
+                        placeholder="Describe Your Team and Background"
                         // onChange={(e) => setForm(e.target.value)}
                         onChange={(e) => setForm({ ...form, teamAndBackground: e.target.value })}
                     />
@@ -173,7 +173,7 @@ function ApplyForIncubation() {
                         value={form.companyAndProducts}
                         type="text"
                         className="form-control"
-                        placeholder="Enter email"
+                        placeholder="Describe Your Company and Products"
                         // onChange={(e) => setForm(e.target.value)}
                         onChange={(e) => setForm({ ...form, companyAndProducts: e.target.value })}
                     />
@@ -185,7 +185,7 @@ function ApplyForIncubation() {
                         value={form.solvingProblem}
                         type="text"
                         className="form-control"
-                        placeholder="Enter email"
+                        placeholder="Describe the problem you are trying to solve"
                         // onChange={(e) => setForm(e.target.value)}
                         onChange={(e) => setForm({ ...form, solvingProblem: e.target.value })}
 
@@ -198,7 +198,7 @@ function ApplyForIncubation() {
                         value={form.uniqueness}
                         type="text"
                         className="form-control"
-                        placeholder="Enter email"
+                        placeholder="What is unique about your solution"
                         // onChange={(e) => setForm(e.target.value)}
                         onChange={(e) => setForm({ ...form, uniqueness: e.target.value })}
 
@@ -211,7 +211,7 @@ function ApplyForIncubation() {
                         value={form.valueProposition}
                         type="text"
                         className="form-control"
-                        placeholder="Enter email"
+                        placeholder=" what is your value proposition for the customer"
                         // onChange={(e) => setForm(e.target.value)}
                         onChange={(e) => setForm({ ...form, valueProposition: e.target.value })}
 
@@ -224,7 +224,7 @@ function ApplyForIncubation() {
                         value={form.competitors}
                         type="text"
                         className="form-control"
-                        placeholder="Enter email"
+                        placeholder="Who are your competitors and what is your competative advantage ?"
                         // onChange={(e) => setForm(e.target.value)}
                         onChange={(e) => setForm({ ...form, competitors: e.target.value })}
 
@@ -237,7 +237,7 @@ function ApplyForIncubation() {
                         value={form.revenueModel}
                         type="text"
                         className="form-control"
-                        placeholder="Enter email"
+                        placeholder="Explain your revenue model"
                         // onChange={(e) => setForm(e.target.value)}
                         onChange={(e) => setForm({ ...form, revenueModel: e.target.value })}
 
@@ -250,7 +250,7 @@ function ApplyForIncubation() {
                         value={form.marketSize}
                         type="text"
                         className="form-control"
-                        placeholder="Enter email"
+                        placeholder="What is the potential market size of the product ?"
                         // onChange={(e) => setForm(e.target.value)}
                         onChange={(e) => setForm({ ...form, marketSize: e.target.value })}
 
@@ -263,7 +263,7 @@ function ApplyForIncubation() {
                         value={form.marketing}
                         type="text"
                         className="form-control"
-                        placeholder="Enter email"
+                        placeholder="How do you market or plan to market your product and services"
                         // onChange={(e) => setForm(e.target.value)}
                         onChange={(e) => setForm({ ...form, marketing: e.target.value })}
 
@@ -295,7 +295,7 @@ function ApplyForIncubation() {
                         value={form.bussinessProposal}
                         type="text"
                         className="form-control"
-                        placeholder="Enter email"
+                        placeholder="Upload a detailed bussiness proposal"
                         // onChange={(e) => console.log(form)}
                         onChange={(e) => setForm({ ...form, bussinessProposal: e.target.value })}
 

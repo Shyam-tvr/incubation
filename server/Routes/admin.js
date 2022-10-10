@@ -69,7 +69,7 @@ router.get('/view/recordList', (req, res) => {
 })
 
 router.get('/slots',(req,res)=>{
-    adminHelpers.getSlots(response)
+    adminHelpers.getSlots()
     .then((response)=>{
           return res.json(response)
     })

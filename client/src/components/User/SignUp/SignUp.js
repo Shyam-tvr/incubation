@@ -19,7 +19,7 @@ const SignUp = () => {
 
     async function registerUser(event) {
         event.preventDefault()
-        console.log(483787348);
+        // console.log(483787348);
 
         const response = await fetch('http://localhost:9000/register', {
             method: 'POST',

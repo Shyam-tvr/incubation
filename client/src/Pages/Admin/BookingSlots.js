@@ -16,7 +16,7 @@ function BookingSlotsPage() {
                 localStorage.removeItem('Admintoken')
 
             } else {
-                console.log(admin);
+                // console.log(admin);
             }
         } else {
             navigate('/admin/login')
